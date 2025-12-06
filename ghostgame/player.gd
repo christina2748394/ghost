@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
 
 
 func _physics_process(delta: float) -> void:
@@ -21,5 +22,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	# Dialogue interactions.
+	if Input.is_action_just_pressed("shift"):
+		var actionables=actionable_finder.get_overlapping_areas()
+		if actionables.size()>0:
+			actionables[0].action()
+			return
+		
 
 	move_and_slide()

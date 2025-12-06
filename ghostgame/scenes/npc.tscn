@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lfxshsj333mf"]
+
+[ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/icon.jpg" id="1_e2toe"]
+
+[node name="NPC" type="Sprite2D"]
+position = Vector2(14, 14)
+scale = Vector2(0.287109, 0.267578)
+texture = ExtResource("1_e2toe")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://j0g6so3f67w0"]
+
+[ext_resource type="Script" path="res://interactable_area.gd" id="1_aqjoh"]
+
+[node name="InteractableArea" type="Area2D"]
+script = ExtResource("1_aqjoh")
+
+[node name="label" type="RichTextLabel" parent="."]
+offset_left = -9.0
+offset_top = -71.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "[E]"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b563l2b01e5er"]
+
+[ext_resource type="Shader" path="res://shaders/magic_stone.gdshader" id="1_353dt"]
+[ext_resource type="Texture2D" uid="uid://dqc7xkxkfjci0" path="res://assets/PixelGlowingAncientAlienPurpleStone/sprite1.png" id="1_dpv4i"]
+[ext_resource type="Script" path="res://scripts/magic_stone.gd" id="1_qdbiu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e5moi"]
+shader = ExtResource("1_353dt")
+shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odv6x"]
+size = Vector2(32, 28.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6np6"]
+size = Vector2(51, 7)
+
+[node name="magic_stone" type="CharacterBody2D"]
+script = ExtResource("1_qdbiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_e5moi")
+texture = ExtResource("1_dpv4i")
+region_enabled = true
+region_rect = Rect2(39, 34, 51, 49.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_odv6x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_j6np6")

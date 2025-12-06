@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dobiymfhoudit"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_7q0ge"]
+[ext_resource type="Texture2D" uid="uid://dd55dgdjjcaem" path="res://assets/Adventurer/adventurer-Sheet.png" id="2_6vyb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar55k"]
+atlas = ExtResource("2_6vyb1")
+region = Rect2(0, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yrxp"]
+atlas = ExtResource("2_6vyb1")
+region = Rect2(50, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak51a"]
+atlas = ExtResource("2_6vyb1")
+region = Rect2(100, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0dhk"]
+atlas = ExtResource("2_6vyb1")
+region = Rect2(150, 0, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjafj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar55k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yrxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak51a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0dhk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdjt8"]
+size = Vector2(16, 24.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7mro"]
+radius = 51.0098
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_7q0ge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 9)
+scale = Vector2(2, 1.716)
+sprite_frames = SubResource("SpriteFrames_vjafj")
+autoplay = "default"
+frame_progress = 0.128003
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 20)
+shape = SubResource("RectangleShape2D_fdjt8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -33)
+scale = Vector2(1, -1.64)
+zoom = Vector2(4, 4)
+
+[node name="Direction" type="Marker2D" parent="."]
+
+[node name="ActionableFinder" type="Area2D" parent="Direction"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_n7mro")
